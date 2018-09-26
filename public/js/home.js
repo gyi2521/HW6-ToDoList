@@ -8,7 +8,7 @@ $(function () {
             .then(function (data) {
                 let html = "";
                 console.log(data);
-                data.forEach(e => html += `<li task-id='${e.itemId}'><input type='checkbox' class='update' ${e.done?'checked':''}>${e.task}<button class='remove'>x</button></li>`);
+                data.forEach(e => html += `<li task-id='${e.itemId}'><input type='checkbox' class='update' ${e.done?'checked':''}>${e.task}<button class='remove'><i class="fas fa-times btn-style"></i></button></li>`);
                 render(html);
             });
     };
@@ -55,46 +55,4 @@ $(function () {
     displayToDoList();
 })
 
-
-//from youtube
-// $(function (){
-//     var $tasks = $('#inputTask');
-//     $.ajax({
-//         type: 'GET',
-//         url: '/api/toDo',
-//         success: function(tasks) {
-//             //console.log('success', orders)
-//             $.each(tasks, function(i, task) {
-//                 $tasks.append(`<li>mytask</li>`)
-//             });
-//         }
-//     });
-// });
-
-// $('#add-order').on('click',function() {
-//     var order = {
-//         action: $('#inputTask').val(''),  
-//     }
-// })
-
-// $.ajax({
-//     type:'POST',
-//     url: '/api/orders',
-//     data: order,
-//     success: function(newTask) {
-//         $orders.append(`<li>name:  + order.name</li>`)
-//     },
-//     error: function() {
-//         alert('error saving task');
-//     }
-// })
-
-//Didn't use at all
-// const runToDoQuery = function () {
-//     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-//     $.ajax({ url: "/api/toDo", method: "GET" })
-//       .then(function(toDoList) {
-//         renderList('#displayToDo', toDoList);
-//       });
-//   }
 

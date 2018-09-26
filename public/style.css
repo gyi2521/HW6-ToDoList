@@ -22,7 +22,18 @@ input{
 input:focus{
     outline: none;
 }
-#btnSubmit{
+
+.update {
+    width:30px;
+}
+
+.remove {
+    width: 60px;
+    text-align: right;
+}
+
+
+button{
     background: none;
     border:none;
     padding:none;
@@ -41,12 +52,13 @@ ul {
     text-align: left;
 }
 li{
-    display: inline-block;
+    display: block;
     text-align: left;
     background: #eee;
-    margin: 5px;
+    margin: 10px;
     border-radius: 20px;
     width: 90%;
+    
 
 }
 
@@ -62,8 +74,6 @@ li{
         width:50%;
 
     }
-    input{
-        width: 80%;
-    }
+
 }
 

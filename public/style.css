@@ -1,3 +1,25 @@
+body {
+    color: white;
+}
+header {
+    padding: 20px;
+    background-color: 	#af006a;
+}
+main {
+    border: 1px solid	#af006a;
+    border-radius: 10px;
+    margin: 20px 80px 20px 80px;
+    padding: 20px;
+    width:50%;
+}
+input{
+    border: 1px solid #af006a;
+    border-radius: 20px;
+    width: 400px;
+}
+input:focus{
+    outline: none;
+}
 .big-icon{
  padding: 10px;
 }

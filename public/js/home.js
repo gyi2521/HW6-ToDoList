@@ -3,41 +3,56 @@ function render(html) {
     $("#result").html(html);
 }
 $(function () {
-    const getToDoList = () => {
+    const displayToDoList = () => {
         $.ajax({ url: "/api/toDo", method: "GET" })
             .then(function (data) {
                 let html = "";
-                data.forEach(e => html += `<li><input type='checkbox'>${e}<button>x</button></li>`);
+                console.log(data);
+                data.forEach(e => html += `<li task-id='${e.itemId}'><input type='checkbox' class='update' ${e.done?'checked':''}>${e.task}<button class='remove'>x</button></li>`);
                 render(html);
             });
     };
-    getToDoList();
+   
 
-    const theAjaxCall = () => {
+    const saveToDoList = () => {
         const newTask = {
-            action: $('#inputTask').val().trim()
+            done: false,
+            task: $('#inputTask').val().trim()
         };
         $.ajax({ url: '/api/toDo', method: 'POST', data: newTask })
             .then(function (data) {
                 $('#inputTask').val('');
-                getToDoList();
+                $('#inputTask').focus();
+                displayToDoList();
             });
     };
-    $('#btnSubmit').on("click", theAjaxCall);
+    $('#btnSubmit').on("click", saveToDoList);
 
 
-    $('.remove').on('click', function () {
-        
-        var $li = $(this).closest('li');        
-        $.ajax(
-            { 
-                url: "/api/toDo" + $(this).attr('data-id'), 
-                method: "DELETE",
-                success: function() {
-                    $li.remove();
-                }
+    $(document).on('click', '.remove',function () {
+
+        let li = $(this).closest('li');        
+        $.ajax({ url: "/api/toDo/" + li.attr('task-id'), method: "DELETE"})
+            .then(function(data){
+                //li.remove();
+                displayToDoList();
             })
     });
+
+    $(document).on('click', '.update',function () {
+        let li = $(this).closest('li');    
+        const updatedTask = {
+            itemId:  li.attr('task-id'),
+            done: $(this).is(':checked')
+        };
+            
+        $.ajax({ url: "/api/toDo" , method: "PUT", data: updatedTask})
+            .then(function(data){
+                displayToDoList();
+            })
+    });
+
+    displayToDoList();
 })
 
 

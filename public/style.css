@@ -1,6 +1,8 @@
 body {
     color: white;
     font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
 header {
     margin:0px;
@@ -18,6 +20,7 @@ input{
     border: 1px solid #af006a;
     border-radius: 20px;
     width: 80%;
+    padding: 5px;
 }
 input:focus{
     outline: none;
@@ -28,8 +31,7 @@ input:focus{
 }
 
 .remove {
-    width: 60px;
-    text-align: right;
+    float: right;
 }
 
 
@@ -61,6 +63,7 @@ li{
     
 
 }
+
 
 @media only screen and (min-width: 600px) {
     body{

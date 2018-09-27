@@ -8,7 +8,7 @@ $(function () {
             .then(function (data) {
                 let html = "";
                 console.log(data);
-                data.forEach(e => html += `<li task-id='${e.itemId}'><input type='checkbox' class='update' ${e.done?'checked':''}>${e.task}<button class='remove'><i class="fas fa-times btn-style"></i></button></li>`);
+                data.forEach(e => html += `<li task-id='${e.itemId}'><input type='checkbox' id='chkbox${e.itemId}' class='update' ${e.done?'checked':''}>${e.task}<button class='remove'><i class="fas fa-times btn-style"></i></button></li>`);
                 render(html);
             });
     };
